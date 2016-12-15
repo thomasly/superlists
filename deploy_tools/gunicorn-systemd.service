@@ -1,0 +1,11 @@
+[Unit]
+Description=gunicorn server for staging.advanreal.com
+After=network.target
+
+[Service]
+User=yang
+WorkingDirectory=/home/yang/sites/stage.advanreal.com/source
+ExecStart=/home/yang/sites/stage.advanreal.com/virtualenv/bin/gunicorn --bind unix:/tmp/staging.advanreal.com.socket superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
